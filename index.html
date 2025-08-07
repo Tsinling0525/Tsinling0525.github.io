@@ -161,21 +161,23 @@
     </section>
   </div>
   <script>
-    const toggle = document.getElementById('dark-mode-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      // Save preference to localStorage
-      if(document.body.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-      } else {
-        localStorage.setItem('theme', 'light');
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('dark-mode-toggle');
+  
+      toggle?.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+  
+        if (document.body.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+        }
+      });
+  
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
       }
     });
-  
-    // On page load, apply saved theme
-    if(localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-    }
   </script>  
 </body>
 </html>
