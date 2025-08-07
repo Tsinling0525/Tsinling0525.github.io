@@ -11,3 +11,23 @@ header {
     padding: 1em;
     text-align: center;
 }
+
+/* Dark mode styles */
+body.dark {
+    background: #121212;
+    color: #e4e4e4;
+  }
+  body.dark a {
+    color: #90cdf4;
+  }
+  body.dark header {
+    border-bottom: 1px solid #333;
+  }
+  body.dark .project-card {
+    background: #1e1e1e;
+    box-shadow: 0 2px 8px rgba(255 255 255 / 0.1);
+  }
+  body.dark .project-card:hover {
+    box-shadow: 0 4px 14px rgba(255 255 255 / 0.15);
+  }
+  
