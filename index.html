@@ -1,23 +1,161 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tsinling Sun — Back-End Developer</title>
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+    header {
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+    }
+    header p {
+      font-size: 1.25rem;
+      color: #6b7280;
+      margin-top: 0;
+    }
+
+    section {
+      margin: 3rem 0;
+    }
+    section h2 {
+      font-size: 1.75rem;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Projects */
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      box-shadow: 0 4px 14px rgb(0 0 0 / 0.15);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .project-tech {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+    }
+    .project-card a {
+      font-weight: 600;
+      color: #2563eb;
+    }
+
+    /* Contact */
+    .contact-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .contact-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
     <header>
-        <h1>Your Name</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About</a>
-        </nav>
+      <h1>Tsinling Sun</h1>
+      <p>Back-End Developer</p>
+      <p>Building scalable backend systems and clean APIs.</p>
     </header>
-    <main>
-        <h2>Welcome to my portfolio!</h2>
-        <p>I'm a developer specializing in...</p>
-    </main>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m a back-end developer with experience in building reliable, efficient
+        software solutions. Skilled in Node.js, Python, PostgreSQL, and more.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="project-card">
+          <h3>EDM Workflow System</h3>
+          <p class="project-tech">Node.js, PostgreSQL, REST APIs</p>
+          <p>Developed a scalable EDM workflow system optimizing message processing and data analytics.</p>
+          <a href="https://github.com/tsinling0525/edm-workflow" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Data Analysis Tools</h3>
+          <p class="project-tech">Python, Pandas, Scikit-learn</p>
+          <p>Built statistical analysis tools to enhance product development decisions using regression and clustering.</p>
+          <a href="https://github.com/tsinling0525/data-analysis-tools" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p class="project-tech">HTML, CSS, GitHub Pages</p>
+          <p>A portfolio website showcasing my work and professional background.</p>
+          <a href="https://tsinling0525.github.io" target="_blank" rel="noopener noreferrer">Live Site</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:tsinling@example.com">tsinling@example.com</a></li>
+        <li>GitHub: <a href="https://github.com/tsinling0525" target="_blank" rel="noopener noreferrer">github.com/tsinling0525</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/tsinling" target="_blank" rel="noopener noreferrer">linkedin.com/in/tsinling</a></li>
+      </ul>
+    </section>
+  </div>
 </body>
 </html>
