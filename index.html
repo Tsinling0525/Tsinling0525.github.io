@@ -1,141 +1,300 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tsinling Sun — Back-End Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f9fafb;
-      --fg: #1f2937;
-      --accent: #6366f1;
-      --card-bg: #ffffff;
-      --border: #e5e7eb;
-    }
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tsinling Sun — Back‑End Developer</title>
+    <meta name="description" content="Back‑end engineer building scalable Go services, queues, and workflow systems." />
 
-    body.dark {
-      --bg: #111827;
-      --fg: #f3f4f6;
-      --card-bg: #1f2937;
-      --border: #374151;
-    }
+    <!-- SEO & Share -->
+    <meta name="title" content="Tsinling Sun — Back‑End Developer" />
+    <meta property="og:title" content="Tsinling Sun — Back‑End Developer" />
+    <meta property="og:description" content="Scalable Go services, queues, workflow systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tsinling0525.github.io" />
+    <meta property="og:image" content="https://tsinling0525.github.io/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-    * {
-      box-sizing: border-box;
-    }
+    <link rel="icon" href="/favicon.svg" />
+    <style>
+      /* ===== Base & Theme ===== */
+      :root {
+        --bg: #ffffff;          --text: #0f172a;      --muted: #475569;
+        --card: #f8fafc;       --border: #e2e8f0;    --accent: #2563eb;
+        --chip: #eef2ff;       --chip-text: #3730a3;  --shadow: 0 6px 24px rgba(2,6,23,.08);
+      }
+      [data-theme="dark"] {
+        --bg: #0b1220;         --text: #e5e7eb;      --muted: #94a3b8;
+        --card: #0f172a;       --border: #1f2937;    --accent: #60a5fa;
+        --chip: #1e293b;       --chip-text: #c7d2fe;  --shadow: 0 8px 28px rgba(0,0,0,.35);
+      }
+      html, body { height: 100%; }
+      body {
+        margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        background: var(--bg); color: var(--text);
+      }
+      .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+      .prose { max-width: 72ch; }
+      .grid { display: grid; gap: 20px; }
+      .grid.projects { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+      a { color: var(--accent); text-decoration: none; }
+      a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+      img { max-width: 100%; height: auto; display: block; border-radius: 14px; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg);
-      color: var(--fg);
-      transition: background-color 0.3s, color 0.3s;
-    }
+      /* ===== Header / Nav ===== */
+      header { position: sticky; top: 0; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); z-index: 10; }
+      .nav { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+      .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; }
+      .brand .logo { width: 28px; height: 28px; border-radius: 8px; background: var(--text); display:grid; place-items:center; color: var(--bg); font-weight: 800; font-size: 14px; }
+      .nav a { padding: 10px 12px; border-radius: 10px; }
+      .nav a:hover { background: var(--card); }
+      .nav-right { display:flex; align-items:center; gap:6px; }
+      .ghost { border:1px solid var(--border); background: transparent; color: var(--text); }
 
-    header {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-    }
+      /* ===== Hero ===== */
+      .hero { padding: 48px 0 28px; display:grid; grid-template-columns: 1.3fr .7fr; gap: 28px; align-items: center; }
+      @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } }
+      .eyebrow { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .18em; }
+      h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin: 8px 0 12px; }
+      .sub { font-size: clamp(16px, 2.2vw, 18px); color: var(--muted); }
+      .actions { display:flex; gap:12px; margin-top: 16px; flex-wrap: wrap; }
+      .btn { display:inline-flex; align-items:center; gap:10px; padding: 11px 16px; border-radius: 999px; border: 1px solid var(--border); box-shadow: var(--shadow); background: var(--text); color: var(--bg); font-weight: 600; }
+      .btn.secondary { background: var(--card); color: var(--text); }
+      .chips { display:flex; gap:8px; flex-wrap: wrap; margin-top: 14px; }
+      .chip { font-size: 13px; padding: 6px 10px; border-radius: 999px; background: var(--chip); color: var(--chip-text); border: 1px solid var(--border); }
+      .avatar { width: 140px; height: 140px; border-radius: 28px; background: linear-gradient(135deg, var(--card), transparent); border:1px solid var(--border); display:grid; place-items:center; font-size: 44px; }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      font-weight: 800;
-    }
+      /* ===== Sections ===== */
+      section { padding: 28px 0; }
+      section h2 { font-size: 22px; margin: 0 0 12px; }
+      .section-desc { color: var(--muted); margin-bottom: 12px; }
+      .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 16px; box-shadow: var(--shadow); display:flex; flex-direction: column; gap: 12px; }
+      .card .title { font-weight: 700; font-size: 18px; display:flex; align-items:center; gap:8px; }
+      .meta { display:flex; gap:8px; flex-wrap:wrap; color: var(--muted); font-size: 14px; }
+      .badges { display:flex; gap:6px; flex-wrap:wrap; }
+      .badge { font-size: 12px; padding: 4px 8px; border-radius: 999px; border:1px dashed var(--border); color: var(--muted); }
+      .links { display:flex; gap: 10px; margin-top: auto; }
+      .links a { padding: 8px 12px; border-radius: 12px; border:1px solid var(--border); background: transparent; font-weight: 600; }
+      .links a:hover { background: var(--bg); }
 
-    header p {
-      font-size: 1.2rem;
-      color: var(--fg);
-    }
+      /* ===== About ===== */
+      .about { display:grid; grid-template-columns: .85fr 1.15fr; gap: 22px; align-items: start; }
+      @media (max-width: 900px){ .about { grid-template-columns: 1fr; } }
+      ul { padding-left: 18px; }
 
-    #dark-mode-toggle {
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
+      /* ===== Footer ===== */
+      footer { border-top: 1px solid var(--border); margin-top: 24px; }
+      .foot { display:flex; flex-wrap: wrap; align-items:center; justify-content:space-between; gap: 12px; padding: 18px 0; color: var(--muted); }
 
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
+      /* ===== Utilities ===== */
+      .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="logo">TS</span>
+          <span>Tsinling Sun</span>
+        </a>
+        <nav class="nav-right" aria-label="Primary">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <button id="theme-toggle" class="ghost" aria-pressed="false" title="Toggle dark mode">🌗</button>
+        </nav>
+      </div>
+    </header>
 
-    .project-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    <main id="top" class="container">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="intro">
+        <div>
+          <div class="eyebrow">Back‑End Developer • Go</div>
+          <h1 id="intro">I build fast, reliable services and workflow engines.</h1>
+          <p class="sub prose">I’m a back‑end engineer focused on scalable Go services, queues, and workflow systems. Currently experimenting with local LLM orchestration and n8n‑style automation.</p>
+          <div class="actions">
+            <a class="btn" href="https://github.com/tsinling0525" target="_blank" rel="noopener">View GitHub</a>
+            <a class="btn secondary" href="#projects">See Projects</a>
+            <a class="btn secondary" href="/resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+          </div>
+          <div class="chips" aria-label="Tech stack">
+            <span class="chip">Go</span><span class="chip">Redis</span><span class="chip">Postgres</span><span class="chip">Docker</span><span class="chip">gRPC</span><span class="chip">Nginx</span>
+          </div>
+        </div>
+        <div class="avatar" aria-hidden="true">🛠️</div>
+      </section>
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    }
+      <!-- Projects -->
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Featured Projects</h2>
+        <p class="section-desc">A few representative builds. Each card links to code and docs/demo.</p>
+        <div class="grid projects">
 
-    .project-card h2 {
-      margin-top: 0;
-      color: var(--accent);
-    }
+          <article class="card">
+            <img src="https://raw.githubusercontent.com/Tsinling0525/Rivulet/main/assets/diagram.png" alt="Architecture diagram of Rivulet workflow engine">
+            <div class="title">Rivulet</div>
+            <p class="prose">
+              Lightweight, n8n-inspired workflow engine in Go—node-based flows, plugin architecture, event-driven, and type-safe.
+            </p>
+            <div class="badges">
+              <span class="badge">Go</span><span class="badge">Workflows</span><span class="badge">Plugin System</span>
+            </div>
+            <div class="meta">
+              Architected event-driven workflows with plugin interfaces and persistent state—built for clarity and performance.
+            </div>
+            <div class="links">
+              <a href="https://github.com/Tsinling0525/Rivulet" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/Tsinling0525/Rivulet#readme" target="_blank" rel="noopener">Readme →</a>
+            </div>
+          </article>
+          
+          <!-- Project 1 -->
+          <article class="card">
+            <img src="https://user-images.githubusercontent.com/placeholder/1200x630.png" alt="Diagram of a Go workflow engine scheduling jobs via Redis"> 
+            <div class="title">Workflow Engine (Go + Redis)</div>
+            <p class="prose">Lightweight engine that orchestrates jobs with backpressure, idempotency, and dead‑letter queues. Tuned for p95 latency under load.</p>
+            <div class="badges">
+              <span class="badge">Go</span><span class="badge">Redis</span><span class="badge">gRPC</span><span class="badge">Docker</span>
+            </div>
+            <div class="meta">Impact: cut failure rate by ~40% with DLQ + retry jitter.</div>
+            <div class="links">
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Readme/Demo →</a>
+            </div>
+          </article>
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #888;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Tsinling Sun</h1>
-    <p>Back-End Developer</p>
-    <p>Creating scalable, elegant backend systems.</p>
-    <button id="dark-mode-toggle">Toggle Dark Mode 🌚</button>
-  </header>
+          <!-- Project 2 -->
+          <article class="card">
+            <img src="https://user-images.githubusercontent.com/placeholder/1200x630.png" alt="Screenshot of an API gateway management UI"> 
+            <div class="title">API Gateway & Rate Limiter</div>
+            <p class="prose">Token‑bucket rate limiter with per‑key quotas and burst control; gateway integrates request signing and observability.</p>
+            <div class="badges">
+              <span class="badge">Go</span><span class="badge">Nginx</span><span class="badge">OpenTelemetry</span>
+            </div>
+            <div class="meta">Result: sustained 20k req/s, p95 &lt; 80ms in staging tests.</div>
+            <div class="links">
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Docs →</a>
+            </div>
+          </article>
 
-  <main>
-    <div class="project-card">
-      <h2>Project 1: Smart API Gateway</h2>
-      <p>Designed a robust gateway handling rate-limiting, authentication, and routing for microservices.</p>
-    </div>
-    <div class="project-card">
-      <h2>Project 2: Real-Time Job Queue System</h2>
-      <p>Engineered a Redis-based distributed job queue with monitoring dashboard and failover support.</p>
-    </div>
-    <div class="project-card">
-      <h2>Project 3: Workflow System</h2>
-      <p>Engineered a workflow system with state machine and event-driven architecture.</p>
-    </div>
-  </main>
+          <!-- Project 3 -->
+          <article class="card">
+            <img src="https://user-images.githubusercontent.com/placeholder/1200x630.png" alt="CLI tool generating LaTeX and automations"> 
+            <div class="title">Automation CLI & Local LLM</div>
+            <p class="prose">CLI that chains local LLM (Ollama) with file operations and webhooks to auto‑summarize logs and create tasks.</p>
+            <div class="badges">
+              <span class="badge">Go</span><span class="badge">Ollama</span><span class="badge">n8n</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Notes →</a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-  <footer>
-    &copy; 2025 Tsinling Sun &mdash; All rights reserved.
-  </footer>
+      <!-- About -->
+      <section id="about" class="about" aria-labelledby="about-title">
+        <div>
+          <h2 id="about-title">About</h2>
+          <p class="section-desc">Short bio + highlights.</p>
+          <p>I’m Tsinling Sun, a back‑end developer who enjoys building pragmatic systems: queues, schedulers, and APIs that don’t fall over at 2 a.m. I like clean interfaces, small binaries, and measurable impact.</p>
+          <ul>
+            <li>Stats background; comfortable with profiling and basic analytics.</li>
+            <li>Shipped workflow and automation tooling; comfortable with Redis and Postgres.</li>
+            <li>Exploring LLM‑powered dev tooling and on‑device inference.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card">
+            <div class="title">Quick Facts</div>
+            <div class="chips">
+              <span class="chip">Go</span><span class="chip">Redis</span><span class="chip">Postgres</span><span class="chip">Docker</span><span class="chip">gRPC</span><span class="chip">Nginx</span>
+            </div>
+            <p class="prose">Open to back‑end roles and collaborations. Based in Australia (UTC+10).</p>
+            <div class="links">
+              <a href="mailto:tsinling0525@gmail.com">Email</a>
+              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('dark-mode-toggle');
+      <!-- Contact -->
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p class="section-desc">Say hi or ask about a project.</p>
+        <div class="card">
+          <form class="prose" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            <label>
+              <span class="sr-only">Your email</span>
+              <input required name="email" type="email" placeholder="you@email.com" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);" />
+            </label>
+            <label>
+              <span class="sr-only">Message</span>
+              <textarea required name="message" rows="4" placeholder="Message" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);"></textarea>
+            </label>
+            <div class="actions">
+              <button class="btn" type="submit">Send</button>
+              <a class="btn secondary" href="mailto:tsinling0525@gmail.com">Open Mail App</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
 
-      toggle?.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
+    <footer>
+      <div class="container foot">
+        <span>© <span id="year"></span> Tsinling Sun</span>
+        <span>Built with ❤️ using plain HTML/CSS</span>
+      </div>
+    </footer>
+
+    <!-- JSON-LD for richer results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tsinling Sun",
+        "jobTitle": "Back-End Developer",
+        "url": "https://tsinling0525.github.io",
+        "sameAs": ["https://github.com/tsinling0525"]
+      }
+    </script>
+
+    <script>
+      // Dark mode toggle with system preference + persistence
+      (function(){
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved ?? (systemDark ? 'dark' : 'light');
+        root.setAttribute('data-theme', initial);
+        const btn = document.getElementById('theme-toggle');
+        if (btn) btn.setAttribute('aria-pressed', initial === 'dark');
+        btn && btn.addEventListener('click', () => {
+          const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          btn.setAttribute('aria-pressed', next === 'dark');
+          localStorage.setItem('theme', next);
+        });
+      })();
+
+      // Smooth-scroll for same-page nav
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href').substring(1);
+          const el = document.getElementById(id);
+          if (el) { e.preventDefault(); el.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+        });
       });
 
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark');
-      }
-    });
-  </script>
-</body>
+      // Current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
