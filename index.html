@@ -130,9 +130,9 @@
         <h2 id="projects-title">Featured Projects</h2>
         <p class="section-desc">A few representative builds. Each card links to code and docs/demo.</p>
         <div class="grid projects">
-
+          <!-- Project 1 -->
           <article class="card">
-            <img src="https://raw.githubusercontent.com/Tsinling0525/Rivulet/main/assets/diagram.png" alt="Architecture diagram of Rivulet workflow engine">
+            <img src="rivulet.jpeg" alt="Architecture diagram of Rivulet workflow engine">
             <div class="title">Rivulet</div>
             <p class="prose">
               Lightweight, n8n-inspired workflow engine in Go—node-based flows, plugin architecture, event-driven, and type-safe.
@@ -148,48 +148,49 @@
               <a href="https://github.com/Tsinling0525/Rivulet#readme" target="_blank" rel="noopener">Readme →</a>
             </div>
           </article>
-          
-          <!-- Project 1 -->
-          <article class="card">
-            <img src="rivulet.jpeg" alt="Diagram of a Go workflow engine scheduling jobs via Redis"> 
-            <div class="title">Workflow Engine (Go + Redis)</div>
-            <p class="prose">Lightweight engine that orchestrates jobs with backpressure, idempotency, and dead‑letter queues. Tuned for p95 latency under load.</p>
-            <div class="badges">
-              <span class="badge">Go</span><span class="badge">Redis</span><span class="badge">gRPC</span><span class="badge">Docker</span>
-            </div>
-            <div class="meta">Impact: cut failure rate by ~40% with DLQ + retry jitter.</div>
-            <div class="links">
-              <a href="https://github.com/Tsinling0525/Rivulet" target="_blank" rel="noopener">Code →</a>
-              <a href="https://github.com/Tsinling0525/Rivulet/blob/main/README.md" target="_blank" rel="noopener">Readme/Demo →</a>
-            </div>
-          </article>
 
           <!-- Project 2 -->
           <article class="card">
-            <img src="https://user-images.githubusercontent.com/placeholder/1200x630.png" alt="Screenshot of an API gateway management UI"> 
-            <div class="title">API Gateway & Rate Limiter</div>
-            <p class="prose">Token‑bucket rate limiter with per‑key quotas and burst control; gateway integrates request signing and observability.</p>
+            <img src="tree.gif" alt="Mock screenshot of a cozy farming game made in Godot"> 
+            <div class="title">Tree — Godot Farming Game</div>
+            <p class="prose">Learning project for Godot game programming that builds a relaxing farming loop—planting crops, waiting on growth timers, and harvesting for upgrades.</p>
             <div class="badges">
-              <span class="badge">Go</span><span class="badge">Nginx</span><span class="badge">OpenTelemetry</span>
+              <span class="badge">Godot</span><span class="badge">GDScript</span><span class="badge">Game Dev</span>
             </div>
-            <div class="meta">Result: sustained 20k req/s, p95 &lt; 80ms in staging tests.</div>
+            <div class="meta">Focus: practicing Godot scenes/signals and data-driven crop systems while iterating on moment-to-moment feel.</div>
             <div class="links">
-              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Code →</a>
-              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Docs →</a>
+              <a href="https://github.com/Tsinling0525/Tree" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/Tsinling0525/Tree#readme" target="_blank" rel="noopener">Dev Notes →</a>
             </div>
           </article>
 
           <!-- Project 3 -->
           <article class="card">
-            <img src="https://user-images.githubusercontent.com/placeholder/1200x630.png" alt="CLI tool generating LaTeX and automations"> 
-            <div class="title">Automation CLI & Local LLM</div>
-            <p class="prose">CLI that chains local LLM (Ollama) with file operations and webhooks to auto‑summarize logs and create tasks.</p>
+            <img src="markollama_dark.png" alt="Illustration of a reMarkable tablet running a custom chatbot interface"> 
+            <div class="title">Markollama — reMarkable Chatbot</div>
+            <p class="prose">Learning project that ports a conversational assistant onto the reMarkable tablet by reverse engineering its Linux stack and wiring a lightweight llama backend.</p>
             <div class="badges">
-              <span class="badge">Go</span><span class="badge">Ollama</span><span class="badge">n8n</span>
+              <span class="badge">Assembly</span><span class="badge">Reverse Engineering</span><span class="badge">Embedded Linux</span>
             </div>
+            <div class="meta">Focus: exploring device internals, custom input handling, and efficient on-device inference pipelines.</div>
             <div class="links">
-              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Code →</a>
-              <a href="https://github.com/tsinling0525" target="_blank" rel="noopener">Notes →</a>
+              <a href="https://github.com/Tsinling0525/Markollama" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/Tsinling0525/Markollama#readme" target="_blank" rel="noopener">Project Notes →</a>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="card">
+            <img src="arcana_base.png" alt="Diagram of a retrieval-augmented AI knowledge base answering questions"> 
+            <div class="title">ArcanaBase — AI Knowledge Base</div>
+            <p class="prose">Learning project that explores retrieval-augmented generation by turning note collections into a chat-first knowledge base with grounded answers.</p>
+            <div class="badges">
+              <span class="badge">RAG</span><span class="badge">Vector Search</span><span class="badge">LLM</span>
+            </div>
+            <div class="meta">Focus: iterating on ingestion pipelines, chunking strategies, and citation-rich prompts to keep responses trustworthy.</div>
+            <div class="links">
+              <a href="https://github.com/Tsinling0525/ArcanaBase" target="_blank" rel="noopener">Code →</a>
+              <a href="https://github.com/Tsinling0525/ArcanaBase#readme" target="_blank" rel="noopener">Docs →</a>
             </div>
           </article>
         </div>
@@ -203,6 +204,7 @@
           <p>I’m Tsinling Sun, a back‑end developer who enjoys building pragmatic systems: queues, schedulers, and APIs that don’t fall over at 2 a.m. I like clean interfaces, small binaries, and measurable impact.</p>
           <ul>
             <li>Stats background; comfortable with profiling and basic analytics.</li>
+            <li>Hands-on with modern C++ for performance-critical components and integrations.</li>
             <li>Shipped workflow and automation tooling; comfortable with Redis and Postgres.</li>
             <li>Exploring LLM‑powered dev tooling and on‑device inference.</li>
           </ul>
@@ -211,7 +213,7 @@
           <div class="card">
             <div class="title">Quick Facts</div>
             <div class="chips">
-              <span class="chip">Go</span><span class="chip">Redis</span><span class="chip">Postgres</span><span class="chip">Docker</span><span class="chip">gRPC</span><span class="chip">Nginx</span>
+              <span class="chip">Go</span><span class="chip">C++</span><span class="chip">Redis</span><span class="chip">Postgres</span><span class="chip">Docker</span><span class="chip">gRPC</span><span class="chip">Nginx</span>
             </div>
             <p class="prose">Open to back‑end roles and collaborations. Based in Australia (UTC+10).</p>
             <div class="links">
